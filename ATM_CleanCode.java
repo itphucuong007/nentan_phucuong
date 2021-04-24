@@ -1,14 +1,12 @@
 package chaper01;
 
 import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.util.Scanner;
 public class ATM {
 	
 		static int money = 0; //global variable 
 	
 	public static void main(String[] args) {
-		ATM Mo_ney = new ATM(); //truy cập vào biến global money
 		
 		final int FIVE_HUNDRED_THOUSAND	= 500000;
 		final int Total_FIVE_HUNDRED_THOUSAND = 2;
@@ -29,8 +27,8 @@ public class ATM {
 		Scanner sc = new Scanner(System.in);
 		do {
 			System.out.print("Input your money: ");
-			ATM.money	= sc.nextInt();
-		} while(ATM.money % 10000 != 0);
+			money	= sc.nextInt();
+		} while(money % 10000 != 0);
 		sc.close();
 		
 		System.out.println("----------------------------");
@@ -59,22 +57,22 @@ public class ATM {
 	public static void toTien(int typeMoney ,int finalTypeMoney) {
 		DecimalFormat formatter	= new DecimalFormat("#,###");
 		if(money >= finalTypeMoney){
-			typeMoney	= money / finalTypeMoney; //phép chia lấy số lượng mệnh giá
-			money		= money % finalTypeMoney;  // tiền còn lại
+			typeMoney	= money / finalTypeMoney;
+			money		= money % finalTypeMoney;
 			System.out.printf("Mệnh giá %s: %d tờ %n", formatter.format(finalTypeMoney), typeMoney);	
 		}
 	}
 	
 	//HÀM TỜ TIỀN GIỚI HẠN (500K VÀ 200K)
 	public static void limitMoney(int totalMoney ,int typeMoney ,int finalTypeMoney ) {
-		DecimalFormat formatter	= new DecimalFormat("#,###"); //format 3 chữ số 1,000
-		if(money >= finalTypeMoney) {     //nếu số tiền nhập vào >= tiền mệnh giá
+		DecimalFormat formatter	= new DecimalFormat("#,###");
+		if(money >= finalTypeMoney) {
 			typeMoney	= money / finalTypeMoney;
 			
-			if (typeMoney > totalMoney) {   //nếu số tiền nhập vào >= tiền giới hạn sẵn có
+			if (typeMoney > totalMoney) {
 				typeMoney = totalMoney;	
 				}
-			money = money - finalTypeMoney*typeMoney; // tiền còn lại
+			money = money - finalTypeMoney*typeMoney;
 			System.out.printf("Mệnh giá %s: %d tờ %n", formatter.format(finalTypeMoney), typeMoney);
 		
 		}
